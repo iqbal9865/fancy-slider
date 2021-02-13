@@ -44,7 +44,8 @@ const selectItem = (event, img) => {
   let item = sliders.indexOf(img);
   if (item === -1) {
     sliders.push(img);
-  } else {
+  } 
+  else {
     delete sliders[img];
     delete sliders[item];
     element.classList.toggle('added');
