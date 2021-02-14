@@ -35,7 +35,7 @@ const getImages = (query) => {
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
     .then(response => response.json())
     .then(data => showImages(data.hits))
-    .catch(err => console.log(err))
+    .catch(error => showError('SomeThing Wrong! Failed Data Loading!'))
 }
 
 let slideIndex = 0;
@@ -75,7 +75,7 @@ const createSlider = () => {
   imagesArea.style.display = 'none';
   // const duration = document.getElementById('duration').value || 1000;
   let duration = document.getElementById('duration').value;
-  if(duration <= 1000){
+  if(duration < 1000){
       duration = 3000;
   }
   else{
@@ -149,4 +149,8 @@ document.getElementById("duration").addEventListener("keypress", function(event)
 const toggleSpinner = () => {
   const spinner = document.getElementById('loading-spinner');
   spinner.classList.toggle('d-none')
+}
+const showError = error => {
+  const errorMessage = document.getElementById('error-message');
+  errorMessage.innerText = error;
 }
