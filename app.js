@@ -36,6 +36,7 @@ const getImages = (query) => {
     .then(response => response.json())
     .then(data => showImages(data.hits))
     .catch(error => showError('SomeThing Wrong! Failed Data Loading!'))
+    // .catch(err => console.log(err))
 }
 
 let slideIndex = 0;
@@ -153,4 +154,5 @@ const toggleSpinner = () => {
 const showError = error => {
   const errorMessage = document.getElementById('error-message');
   errorMessage.innerText = error;
+  toggleSpinner()
 }
